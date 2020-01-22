@@ -1,0 +1,50 @@
+﻿using System;
+
+namespace BankAccount
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Contact obj1 = new Contact();
+            Contact obj2 = new Contact();
+            obj1.SetContact();
+            obj2.SetContact();
+            Console.Clear();
+            DisplayContactDetails(obj1);
+            DisplayContactDetails(obj2);
+
+
+            System.Environment.Exit(1);
+            try
+            {
+                Console.WriteLine("Enter name: ");
+                var name = Console.ReadLine();
+
+                Customer obj = new Customer(name);
+
+                Console.WriteLine("Enter contact details : ");
+                obj.SetContactDetails();
+
+                Console.Clear();
+                var contactDetails = obj.GetContactDetails();
+                DisplayContactDetails(contactDetails);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private static void DisplayContactDetails(Contact contactDetails)
+        {
+            Console.WriteLine($"Phone number : {contactDetails._phone_number}");
+            Console.WriteLine($"Address      : {contactDetails._address}");
+            Console.WriteLine($"City         : {contactDetails._city}");
+            Console.WriteLine($"State        : {contactDetails._state}");
+            Console.WriteLine($"PIN          : {contactDetails._pin}");
+            Console.WriteLine($"Country      : {contactDetails._country}");
+        }
+    }
+}
